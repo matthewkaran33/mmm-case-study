@@ -2,7 +2,7 @@
 Synthetic transportability check for the Everline Foods (SIMULATED) MMM case
 study.
 
-SIMULATED DATA — not real company data.
+SIMULATED DATA - not real company data.
 
 What it does:
   1. Takes the national v2 posterior (fit on national weekly data) as given.
@@ -15,7 +15,7 @@ What it does:
      posterior draw.
 
 What it is NOT: a holdout validation. The model was never trained on ANY of
-the 12 geos — not the 2 eval geos and not the other 10 — so nothing here is
+the 12 geos - not the 2 eval geos and not the other 10 - so nothing here is
 "unseen" relative to a geo training set. This tests whether the national
 curve shape transfers to a separately simulated geo dataset where the truth
 is known. A real holdout would fit a geo-level model on 10 geos and evaluate
@@ -51,7 +51,7 @@ from meridian.analysis import tensors as tensors_mod  # noqa: E402
 from meridian.model import model as model_mod  # noqa: E402
 from meridian.analysis import analyzer as analyzer_mod  # noqa: E402
 
-SIM_FOOTNOTE = "Simulated data — 'Everline Foods' is a fictional brand."
+SIM_FOOTNOTE = "Simulated data - 'Everline Foods' is a fictional brand."
 plt.rcParams.update({"figure.dpi": 130, "font.size": 10, "axes.titlesize": 12,
                      "axes.titleweight": "bold"})
 PALETTE = ["#2a6f97", "#61a5c2", "#f4a259", "#bc4b51", "#5b8e7d"]
@@ -74,7 +74,7 @@ def region_media(df_geo, geos, share):
     """Aggregate a set of geos into national-equivalent media.
 
     Sums the geos' spends, then divides by the region's size share so the
-    series sits at national scale — the scale the model's saturation curve
+    series sits at national scale - the scale the model's saturation curve
     was estimated at. (Saturation is scale-dependent; see module docstring.)
     """
     sub = df_geo[df_geo["geo"].isin(geos)].sort_values(["week", "geo"])
@@ -135,7 +135,7 @@ def main():
     lim = [0, max(xs.max(), ys.max()) * 1.15]
     ax.plot(lim, lim, ls="--", color="#999", lw=1.2, label="Perfect recovery (45°)")
     ax.set_xlim(lim); ax.set_ylim(lim)
-    ax.set_xlabel("True incremental revenue, eval geos ($M) — known from simulation")
+    ax.set_xlabel("True incremental revenue, eval geos ($M) - known from simulation")
     ax.set_ylabel("Model-predicted incremental revenue ($M, posterior mean ± 90% CI)")
     ax.set_title("Synthetic transportability check: national response-curve\n"
                  "shape applied to a separately simulated geo dataset")
@@ -143,7 +143,7 @@ def main():
     ax.text(0.01, -0.20,
             SIM_FOOTNOTE + " Eval-region media rescaled to national-equivalent "
             "before prediction (saturation is scale-dependent). The model was "
-            "fit on national data only — never on these geos. Curve-shape "
+            "fit on national data only - never on these geos. Curve-shape "
             "transport test on simulated data, not a randomized experiment.",
             transform=ax.transAxes, fontsize=8, color="#666")
     fig.tight_layout()
@@ -152,11 +152,11 @@ def main():
     print("chart written: charts/09_transportability_check.png")
 
     with open("data/transportability_check.json", "w") as f:
-        json.dump({"note": ("SIMULATED DATA — Everline Foods is fictional. "
+        json.dump({"note": ("SIMULATED DATA - Everline Foods is fictional. "
                             "Synthetic transportability check: the national v2 "
                             "posterior (fit on national weekly data) applied "
                             "to a separately simulated 12-geo dataset. Not a "
-                            "holdout validation — the model never trained on "
+                            "holdout validation - the model never trained on "
                             "any of the 12 geos."),
                    "eval_geos": eval_geos, "results": results}, f, indent=2)
     print("saved data/transportability_check.json")

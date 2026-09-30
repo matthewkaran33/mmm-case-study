@@ -1,7 +1,7 @@
 """
-Read-out for the Everline Foods (SIMULATED) MMM case study — v2.
+Read-out for the Everline Foods (SIMULATED) MMM case study - v2.
 
-SIMULATED DATA — not real company data.
+SIMULATED DATA - not real company data.
 
 Reloads the fitted Meridian model (no refitting) and produces:
   1. Channel contribution & ROI table (posterior means + 90% CI)
@@ -11,7 +11,7 @@ Reloads the fitted Meridian model (no refitting) and produces:
   4. Matplotlib charts in charts/ (v1 charts archived under charts/v1_before/)
   5. Headline numbers saved to data/readout.json
 
-v2 rebuild log (everything that changed vs v1 — this is a rebuild, not a
+v2 rebuild log (everything that changed vs v1 - this is a rebuild, not a
 controlled experiment, so the before/after charts cannot isolate any single
 change):
   - simulated dataset: TV flights staggered against promo weeks (v1 ran
@@ -21,7 +21,7 @@ change):
   - response curves are shown only within ~observed spend range (<=1.25x),
     not extrapolated to 1.5x
   - new chart 06: search response curve v1 vs v2 rebuild (multiple things
-    changed — do not read the difference as the effect of the priors alone)
+    changed - do not read the difference as the effect of the priors alone)
   - new charts 07/08: prior-vs-posterior for ROI and half-saturation (ec)
   - scenario interval comes from propagating every posterior draw through
     Meridian's own incremental_outcome() on scenario media
@@ -49,7 +49,7 @@ from meridian.analysis import tensors as tensors_mod  # noqa: E402
 from meridian.model import model as model_mod  # noqa: E402
 from meridian.analysis import analyzer as analyzer_mod  # noqa: E402
 
-SIM_FOOTNOTE = "Simulated data — 'Everline Foods' is a fictional brand."
+SIM_FOOTNOTE = "Simulated data - 'Everline Foods' is a fictional brand."
 plt.rcParams.update({
     "figure.dpi": 130, "font.size": 10, "axes.titlesize": 12,
     "axes.titleweight": "bold",
@@ -119,7 +119,7 @@ def budget_scenario_full_posterior(an, df):
     Every posterior draw flows through Meridian's own incremental_outcome()
     evaluated on scenario media (passed as new_data), so the net-gain
     distribution reflects the joint uncertainty in ROI, adstock, and
-    saturation — not an interpolation of curve CIs.
+    saturation - not an interpolation of curve CIs.
 
     net_d = [video(scenario) - video(baseline)] - [display(baseline) - display(scenario)]
     """
@@ -201,7 +201,7 @@ def chart_roi(df_summary):
             color=PALETTE, capsize=4)
     ax.axvline(1.0, color="#bc4b51", ls="--", lw=1.2, label="Breakeven (ROI = 1)")
     ax.set_yticks(y, s["channel"])
-    ax.set_xlabel("ROI — incremental revenue \\$ per \\$1 spent (posterior mean, 90% CI)")
+    ax.set_xlabel("ROI - incremental revenue \\$ per \\$1 spent (posterior mean, 90% CI)")
     ax.set_title("ROI by channel")
     ax.legend(frameon=False)
     ax.text(0.01, -0.18, SIM_FOOTNOTE, transform=ax.transAxes, fontsize=8, color="#666")
@@ -250,11 +250,11 @@ def chart_response_curves(an):
 
 
 def chart_search_before_after(an):
-    """v1 vs v2 search response curve — a rebuild comparison, NOT controlled.
+    """v1 vs v2 search response curve - a rebuild comparison, NOT controlled.
 
     v1 and v2 differ in the simulated dataset (seed, TV/promo timing), the
     saturation priors, AND the MCMC config. Same analyzer machinery, same
-    multiplier grid — but the visible difference cannot be attributed to any
+    multiplier grid - but the visible difference cannot be attributed to any
     single change. The extrapolation zone past 1.25x is shaded: v1's curve
     takes off there, v2's stays inside plausible spend levels.
     """
@@ -284,7 +284,7 @@ def chart_search_before_after(an):
     ax.set_xlabel("Spend multiplier (1.0 = historical spend)")
     ax.set_ylabel("Incremental revenue, paid search ($M)")
     ax.set_title("Paid search response curve: v1 vs v2 rebuild\n"
-                 "(dataset, seed, priors, and MCMC all changed — not controlled)")
+                 "(dataset, seed, priors, and MCMC all changed - not controlled)")
     ax.legend(frameon=False, fontsize=9)
     ax.text(0.01, -0.20,
             SIM_FOOTNOTE + " v1's curve explodes past observed spend; v2's stays "
@@ -317,7 +317,7 @@ def _prior_posterior_fig(idata, var, title, fname, truth_map, logx=False):
             ax.legend(frameon=False, fontsize=8)
     fig.suptitle(title, fontweight="bold")
     fig.text(0.01, 0.01, SIM_FOOTNOTE + " 'Sim truth' is the simulation's known "
-             "parameter — the model never sees it.", fontsize=8, color="#666")
+             "parameter - the model never sees it.", fontsize=8, color="#666")
     fig.tight_layout(rect=[0, 0.04, 1, 0.92])
     fig.savefig(f"{C.CHART_DIR}/{fname}", bbox_inches="tight")
     plt.close(fig)
@@ -393,7 +393,7 @@ def main():
 
     scen_out = {k: v for k, v in scen.items() if not k.startswith("_")}
     readout = {
-        "note": "SIMULATED DATA — Everline Foods is fictional.",
+        "note": "SIMULATED DATA - Everline Foods is fictional.",
         "version": "v2",
         "channels": summary.to_dict(orient="records"),
         "calibration": cal.to_dict(orient="records"),

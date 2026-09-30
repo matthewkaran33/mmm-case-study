@@ -33,7 +33,7 @@ BRAND = "Everline Foods (FICTIONAL - simulated data)"
 #   TV flights:      weeks (6,12), (28,34), (44,50)
 #   Promo weeks:     weeks (9,15), (22,25), (40,46)
 # That yields clean TV-only windows (6-8, 28-33, 46-49), a clean promo-only
-# window (22-24), and partial overlaps (9-11, 44-45) — so the confounding is
+# window (22-24), and partial overlaps (9-11, 44-45) - so the confounding is
 # now a testable feature: the model should recover TV's ROI better than v1.
 TV_FLIGHTS = ((6, 12), (28, 34), (44, 50))
 PROMO_WINDOWS = ((9, 15), (22, 25), (40, 46))
@@ -89,7 +89,7 @@ def simulate():
     s = CHANNELS["paid_social"]["base"] * pulse * (1 + 0.15 * RNG.normal(size=N_WEEKS))
     spend["paid_social"] = np.clip(s, 3000, None)
 
-    # tv: flighted — 3 flights per year, dark otherwise (staggered vs promo, see v2 design note)
+    # tv: flighted - 3 flights per year, dark otherwise (staggered vs promo, see v2 design note)
     s = np.zeros(N_WEEKS)
     for year_start in (0, 52):
         for fstart, fend in TV_FLIGHTS:
@@ -107,7 +107,7 @@ def simulate():
     spend["video"] = np.clip(s, 2000, None)
 
     # ---- controls ----------------------------------------------------------
-    # promo weeks: staggered vs TV flights (v2 design) — clean TV-only,
+    # promo weeks: staggered vs TV flights (v2 design) - clean TV-only,
     # clean promo-only, and partial-overlap windows each year
     promo = np.zeros(N_WEEKS)
     for year_start in (0, 52):

@@ -8,8 +8,8 @@ Purpose: build the dataset for a synthetic transportability check. 12 geos
 x 104 weeks, same DGP parameters as the national v2 simulation (same true
 ROI / adstock / Hill per channel), but geo-specific spend patterns, size
 scales, and noise. Two geos are designated EVAL: the transportability script
-(04_transportability_check.py) applies the national posterior — fit on
-national weekly data, never on any of these 12 geos — to the eval geos and
+(04_transportability_check.py) applies the national posterior - fit on
+national weekly data, never on any of these 12 geos - to the eval geos and
 checks the predicted channel effects against the known truth.
 
 Run from the repo root:  python scripts/01b_simulate_data.py
@@ -30,7 +30,7 @@ _spec.loader.exec_module(sim01)
 RNG = np.random.default_rng(44)
 
 N_GEOS = 12
-# size shares (sum to 1) — a couple of big geos, a long tail of small ones
+# size shares (sum to 1) - a couple of big geos, a long tail of small ones
 GEO_SHARES = np.array([0.16, 0.13, 0.11, 0.10, 0.09, 0.08, 0.08, 0.07, 0.06, 0.05, 0.04, 0.03])
 GEO_SHARES = GEO_SHARES / GEO_SHARES.sum()
 GEO_IDS = [f"geo_{i+1:02d}" for i in range(N_GEOS)]
@@ -135,7 +135,7 @@ def simulate_geo():
     df = pd.DataFrame(rows)
     truth = {
         "brand": BRAND,
-        "note": ("SIMULATED data. Geo variant of the v2 DGP — same true ROI/decay/slope, "
+        "note": ("SIMULATED data. Geo variant of the v2 DGP - same true ROI/decay/slope, "
                  "geo-specific spend draws and noise. Saturation (ec) scales with geo "
                  "size: ec_geo = ec_national * geo_share, so each geo sits at the same "
                  "relative point on its saturation curve as the nation does."),

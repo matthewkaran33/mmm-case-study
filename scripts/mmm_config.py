@@ -19,7 +19,7 @@ CONTROL_COLS = ["price", "promo"]
 #   ROI:    s=0.8  -> mean = median * 1.38; implied means [5.5, 4.1, 3.4, 1.7, 4.8]
 #   ec:     s=0.45 -> mean = median * 1.11; implied means [27.7k, 22.1k, 110.7k, 8.9k, 19.9k]
 #   slope:  s=0.35 -> mean = median * 1.06; implied mean 2.13 (median 2.0)
-# roi medians: reasonable industry guesses — search/video most efficient,
+# roi medians: reasonable industry guesses - search/video most efficient,
 # display prospecting near breakeven. Wide sigma lets the data speak.
 ROI_PRIOR_MEDIAN = np.array([4.0, 3.0, 2.5, 1.2, 3.5])
 ROI_SIGMA = 0.8
@@ -35,7 +35,7 @@ DECAY_B = np.array([7.0, 5.0, 3.0, 8.0, 4.5])
 # response curve extrapolate wildly past observed spend (unidentified Hill
 # region). The tighter prior keeps saturation inside plausible spend levels
 # while still letting the data move it ~1.5x either way. Note: the v1/v2
-# before/after chart is a rebuild log, not a controlled comparison —
+# before/after chart is a rebuild log, not a controlled comparison -
 # the dataset, seed, and MCMC config changed between versions too.
 EC_PRIOR_MEDIAN = np.array([25000.0, 20000.0, 100000.0, 8000.0, 18000.0])
 EC_SIGMA = 0.45
@@ -48,7 +48,7 @@ SLOPE_SIGMA = 0.35
 
 # --- sampling ----------------------------------------------------------------
 SEED = 123
-# v2: longer MCMC for anything public-facing — 4 chains, deeper warmup, more draws.
+# v2: longer MCMC for anything public-facing - 4 chains, deeper warmup, more draws.
 N_CHAINS = 4
 N_ADAPT = 1000
 N_BURNIN = 1000

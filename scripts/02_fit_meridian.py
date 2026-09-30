@@ -1,7 +1,7 @@
 """
 Fit a Meridian MMM on the simulated Everline Foods weekly dataset.
 
-SIMULATED DATA — not real company data.
+SIMULATED DATA - not real company data.
 
 Steps:
   1. Load data, build Meridian InputData (national model).

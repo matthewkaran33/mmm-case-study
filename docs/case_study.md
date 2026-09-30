@@ -3,28 +3,28 @@
 **Note: every number below comes from simulated data.** "Everline Foods" is a
 fictional brand. I built the dataset with a known data-generating process
 (adstock, diminishing returns, seasonality, promo, noise) so I could test the
-modeling workflow end to end — including checking the model's answers against
+modeling workflow end to end, including checking the model's answers against
 the truth, which you can't do with real data.
 
 ## Setup
 
 - 104 weeks of national data, 5 channels: paid search, paid social, TV,
   display, online video. Total media: $12.5M. Total revenue: $342M.
-- Google Meridian (Bayesian MMM), fitted with MCMC — 4 chains, 2000 kept
+- Google Meridian (Bayesian MMM), fitted with MCMC: 4 chains, 2000 kept
   draws each. Priors were set from domain knowledge, not from the simulation
   truth: search/video expected most efficient, display near breakeven, TV
   with the longest carryover.
 - One deliberate design choice worth flagging: TV flights are staggered
   against promo weeks (clean TV-only windows, a clean promo-only window, and
   partial overlaps each year). In the first version of this project every TV
-  flight ran exactly on top of promo weeks and TV credit leaked into promo —
-  the stagger makes that confounding testable instead of accidental.
+  flight ran exactly on top of promo weeks and TV credit leaked into promo.
+  The stagger makes that confounding testable instead of accidental.
 - Convergence is clean (R-hat ≈ 1.00 on every parameter, 0% bad) and the
   model tracks history well: R² 0.94, weighted MAPE 3.6% on weekly revenue.
 
 ## What the diagnostics do and don't tell you
 
-R-hat ≈ 1.00 means the MCMC chains mixed properly — the sampler did its
+R-hat ≈ 1.00 means the MCMC chains mixed properly. The sampler did its
 job. R² 0.94 and wMAPE 3.6% mean the model tracks weekly revenue closely.
 Neither means the channel ROIs are causally correct. A model can fit history
 well while misattributing credit between channels: paid search is estimated
@@ -48,9 +48,9 @@ seasonality, promo, price).
 
 ## Where the model misses
 
-Because the data is simulated, I know the true ROIs — and the model gets
+Because the data is simulated, I know the true ROIs, and the model gets
 four out of five inside its 90% intervals. The remaining miss is paid
-search — the model says 9.2, truth is 4.5. Search spend grew smoothly alongside the brand's growth trend for two
+search: the model says 9.2, truth is 4.5. Search spend grew smoothly alongside the brand's growth trend for two
 straight years, so the model can't fully separate the two. That's not a
 modeling failure, it's the data telling the truth about what 104 weeks of
 observational data can and can't identify. The intervals carry the real
@@ -65,12 +65,12 @@ versions, so no single change gets the credit.
 
 v1 had a real problem: the priors on the saturation curve were wide enough
 that paid search's response curve exploded once you pushed spend past what
-was ever observed — the classic unidentified-Hill problem. The v2 rebuild
+was ever observed (the classic unidentified-Hill problem). The v2 rebuild
 changed several things at once: tighter saturation priors, response curves
 presented only inside observed spend variation (≤1.25x), staggered TV/promo
 timing in the simulated dataset, a new random seed, and longer MCMC. Because
 all of that changed together, the v1-vs-v2 before/after chart documents the
-rebuild — it cannot isolate the effect of the prior change. The chart is in
+rebuild: it cannot isolate the effect of the prior change. The chart is in
 the charts folder; read it as a log, not an experiment.
 
 ## Budget scenario
@@ -84,38 +84,38 @@ Directional, not a media plan: marginal-return estimates are the
 least-identified part of any MMM, and I'd want a holdout test before moving
 real money on the strength of one model run.
 
-## Geo-holdout validation
+## Synthetic transportability check
 
 I also built a 12-geo variant of the dataset (same true parameters,
-geo-sized saturation, two holdout geos) and asked: does the national
-response-curve shape transport to geos the model never saw? With holdout
-media rescaled to national-equivalent — saturation is scale-dependent, so
-this is the correct comparison — the model recovers 4 of 5 channels inside
-its 90% intervals in both the holdout and training regions. The misses are
-the same two channels the national calibration already flagged (search and
-video get over-credited), which is exactly what a validation should do:
-reproduce the known weaknesses, not hide them. This is a transportability
-check on simulated data, not a randomized experiment — a real geo test would
-randomize the holdout.
+geo-sized saturation) and applied the national response-curve shape to it,
+scoring two regions: 2 eval geos and the other 10. The model was never fit
+on any of these geos, so this is not a holdout in the usual sense. It tests
+whether the national curve shape transfers to a separately simulated geo
+dataset where the truth is known. With region media rescaled to
+national-equivalent (saturation is scale-dependent), the model recovers 4 of
+5 channels inside its 90% intervals in both regions. The misses are the same
+two channels the national calibration already flagged: search and video get
+over-credited. A real holdout would fit a geo-level model on 10 geos and
+evaluate on the excluded 2. A real geo test would randomize the holdout.
 
 ## Bottom line for a CMO
 
 - **Online video is the strongest read.** Highest estimated ROI, and it's not
-  saturated — it has headroom before diminishing returns bite. The estimate
+  saturated: it has headroom before diminishing returns bite. The estimate
   runs hot (9.4 vs 6.1 true), so treat the ranking as the signal, not the
   point estimate.
 - **Paid search is materially unidentified.** The model says 9.2; the truth
-  is 4.5 — roughly double. Search spend grew smoothly alongside the brand's
+  is 4.5, roughly double. Search spend grew smoothly alongside the brand's
   growth trend for two straight years, so the model can't separate the two.
   Do not use this ROI to guide allocation without a calibration experiment.
 - **TV works, expensively.** Biggest absolute contributor, middling
-  efficiency — with TV/promo confounding addressed in the v2 design, the
+  efficiency, with TV/promo confounding addressed in the v2 design, the
   5.4x read is one you can actually use.
 - **Display is on the bubble.** ROI interval straddles breakeven (0.3–3.1).
-  Cut it or prove it with a geo test — don't scale it.
+  Cut it or prove it with a geo test. Don't scale it.
 - **Paid social is the fuzziest read** (ROI 1.8–8.5). It needs an
   incrementality test before any budget decision.
 - **Display-to-video is the strongest hypothesis for an incrementality
   test:** the full-posterior scenario puts the expected gain at +$2.6M
   (90% interval $1.9M–$3.2M) for a $128k shift. Directional, not a media
-  plan — the next step is a test, not a reallocation.
+  plan. The next step is a test, not a reallocation.

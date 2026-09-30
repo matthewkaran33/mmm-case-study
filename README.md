@@ -1,4 +1,4 @@
-# MMM Case Study — "Everline Foods" (SIMULATED DATA)
+# MMM Case Study: "Everline Foods" (SIMULATED DATA)
 
 All data here is simulated. "Everline Foods" is a fictional brand. The
 datasets were generated with a known data-generating process (adstock +
@@ -10,7 +10,7 @@ end to end, including checking the model's answers against the truth.
 ![ROI by channel](charts/02_roi_by_channel.png)
 
 Channel ROI, posterior means with 90% credible intervals. Paid search's
-interval spans nearly 3x — the point estimate should not drive budget
+interval spans nearly 3x, so the point estimate should not drive budget
 decisions on its own.
 
 ![Response curves](charts/04_response_curves.png)
@@ -22,7 +22,7 @@ are not extrapolated past what was observed.
 
 Full-posterior net-gain distribution for shifting 15% of display spend into
 online video: +$2.6M expected, 90% interval $1.9M–$3.2M. Directional, not a
-media plan — the read is a hypothesis for an incrementality test.
+media plan. The read is a hypothesis for an incrementality test.
 
 ## What this is
 
