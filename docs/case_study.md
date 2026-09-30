@@ -22,6 +22,17 @@ the truth, which you can't do with real data.
 - Convergence is clean (R-hat ≈ 1.00 on every parameter, 0% bad) and the
   model tracks history well: R² 0.94, weighted MAPE 3.6% on weekly revenue.
 
+## What the diagnostics do and don't tell you
+
+R-hat ≈ 1.00 means the MCMC chains mixed properly — the sampler did its
+job. R² 0.94 and wMAPE 3.6% mean the model tracks weekly revenue closely.
+Neither means the channel ROIs are causally correct. A model can fit history
+well while misattributing credit between channels: paid search is estimated
+at 9.2 against a truth of 4.5, inside this same R²-0.94 model. Fit
+diagnostics validate the sampler and the fit, not the identification. The
+budget scenario leans on marginal returns, the least-identified part of any
+MMM, which is why it stays a hypothesis for a test rather than a plan.
+
 ## What the model says
 
 | Channel | 2-yr spend | Incremental revenue | Share of revenue | ROI (90% CI) |
