@@ -42,7 +42,8 @@ def build_prior() -> prior_dist_mod.PriorDistribution:
     f = np.float64  # backend default float dtype
     return prior_dist_mod.PriorDistribution(
         roi_m=tfd.LogNormal(
-            loc=np.log(C.ROI_MU).astype(f),
+            # loc is log(prior MEDIAN), not log(mean); see mmm_config.py
+            loc=np.log(C.ROI_PRIOR_MEDIAN).astype(f),
             scale=f(C.ROI_SIGMA),
         ),
         alpha_m=tfd.Beta(
@@ -50,11 +51,13 @@ def build_prior() -> prior_dist_mod.PriorDistribution:
             concentration0=C.DECAY_B.astype(f),
         ),
         ec_m=tfd.LogNormal(
-            loc=np.log(C.EC_MU).astype(f),
+            # loc is log(prior MEDIAN), not log(mean); see mmm_config.py
+            loc=np.log(C.EC_PRIOR_MEDIAN).astype(f),
             scale=f(C.EC_SIGMA),
         ),
         slope_m=tfd.LogNormal(
-            loc=f(C.SLOPE_MU),
+            # loc is log(prior median slope); see mmm_config.py
+            loc=f(C.SLOPE_LOG_MEDIAN),
             scale=f(C.SLOPE_SIGMA),
         ),
     )
