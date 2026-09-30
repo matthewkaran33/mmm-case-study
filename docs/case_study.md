@@ -83,10 +83,14 @@ randomize the holdout.
 
 ## Bottom line for a CMO
 
-- **Online video is your best dollar.** Highest ROI, and it's not saturated —
-  it has headroom before diminishing returns bite.
-- **Paid search earns its keep** but the model is flattering it; some of that
-  credit belongs to baseline brand growth. Don't scale on this number alone.
+- **Online video is the strongest read.** Highest estimated ROI, and it's not
+  saturated — it has headroom before diminishing returns bite. The estimate
+  runs hot (9.4 vs 6.1 true), so treat the ranking as the signal, not the
+  point estimate.
+- **Paid search is materially unidentified.** The model says 9.2; the truth
+  is 4.5 — roughly double. Search spend grew smoothly alongside the brand's
+  growth trend for two straight years, so the model can't separate the two.
+  Do not use this ROI to guide allocation without a calibration experiment.
 - **TV works, expensively.** Biggest absolute contributor, middling
   efficiency — and now that the promo-confounding is resolved, the 5.4x read
   is one you can actually use.
@@ -94,6 +98,7 @@ randomize the holdout.
   Cut it or prove it with a geo test — don't scale it.
 - **Paid social is the fuzziest read** (ROI 1.8–8.5). It needs an
   incrementality test before any budget decision.
-- **The reallocation to make now:** move display dollars into online video;
-  even the pessimistic end of the full-posterior range ($1.9M) pays for the
-  $128k shift many times over.
+- **Display-to-video is the strongest hypothesis for an incrementality
+  test:** the full-posterior scenario puts the expected gain at +$2.6M
+  (90% interval $1.9M–$3.2M) for a $128k shift. Directional, not a media
+  plan — the next step is a test, not a reallocation.
