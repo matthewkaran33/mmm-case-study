@@ -11,11 +11,17 @@ Reloads the fitted Meridian model (no refitting) and produces:
   4. Matplotlib charts in charts/ (v1 charts archived under charts/v1_before/)
   5. Headline numbers saved to data/readout.json
 
-v2 changes:
+v2 rebuild log (everything that changed vs v1 — this is a rebuild, not a
+controlled experiment, so the before/after charts cannot isolate any single
+change):
+  - simulated dataset: TV flights staggered against promo weeks (v1 ran
+    every flight on top of promo weeks); new random seed
+  - saturation priors tightened (ec sigma 0.9 -> 0.45, slope sigma 0.6 -> 0.35)
+  - MCMC config: 2 chains x 500 kept draws -> 4 chains x 2000
   - response curves are shown only within ~observed spend range (<=1.25x),
     not extrapolated to 1.5x
-  - new chart 06: search response curve before (v1, wide ec prior) vs
-    after (v2, tightened ec/slope priors)
+  - new chart 06: search response curve v1 vs v2 rebuild (multiple things
+    changed — do not read the difference as the effect of the priors alone)
   - new charts 07/08: prior-vs-posterior for ROI and half-saturation (ec)
   - scenario interval comes from propagating every posterior draw through
     Meridian's own incremental_outcome() on scenario media
@@ -51,7 +57,7 @@ plt.rcParams.update({
 PALETTE = ["#2a6f97", "#61a5c2", "#f4a259", "#bc4b51", "#5b8e7d"]
 # response curves are only presented inside observed spend variation
 RC_MULTS = np.linspace(0.5, 1.25, 16)
-RC_MULTS_FULL = np.linspace(0.5, 1.5, 21)  # for the v1-vs-v2 comparison only
+RC_MULTS_FULL = np.linspace(0.5, 1.5, 21)  # for the v1/v2 rebuild comparison only
 
 
 def load():
@@ -244,11 +250,13 @@ def chart_response_curves(an):
 
 
 def chart_search_before_after(an):
-    """v1 (wide ec/slope priors) vs v2 (tightened) search response curve.
+    """v1 vs v2 search response curve — a rebuild comparison, NOT controlled.
 
-    Same analyzer machinery, same multiplier grid — only the priors (and the
-    v2 dataset's staggered TV/promo design) changed. The extrapolation zone
-    past 1.25x is shaded: v1's curve takes off there, v2's stays plausible.
+    v1 and v2 differ in the simulated dataset (seed, TV/promo timing), the
+    saturation priors, AND the MCMC config. Same analyzer machinery, same
+    multiplier grid — but the visible difference cannot be attributed to any
+    single change. The extrapolation zone past 1.25x is shaded: v1's curve
+    takes off there, v2's stays inside plausible spend levels.
     """
     z = np.load("data/v1_response_curves.npz", allow_pickle=True)
     chs = [str(c) for c in z["channels"]]
@@ -264,10 +272,10 @@ def chart_search_before_after(an):
 
     fig, ax = plt.subplots(figsize=(8, 4.6))
     ax.plot(mults_v1, v1_m / 1e6, ls="--", color="#bc4b51", lw=1.8,
-            label="v1: wide ec/slope priors")
+            label="v1")
     ax.fill_between(mults_v1, v1_lo / 1e6, v1_hi / 1e6, color="#bc4b51", alpha=0.15)
     ax.plot(RC_MULTS_FULL, v2_m, color="#2a6f97", lw=1.8,
-            label="v2: tightened ec/slope priors")
+            label="v2 (rebuilt: new data, seed, priors, MCMC)")
     ax.fill_between(RC_MULTS_FULL, v2_lo, v2_hi, color="#2a6f97", alpha=0.15)
     ax.axvspan(1.25, 1.5, color="#999", alpha=0.12)
     ax.text(1.375, ax.get_ylim()[1] * 0.92, "extrapolation\nzone", ha="center",
@@ -275,11 +283,14 @@ def chart_search_before_after(an):
     ax.axvline(1.0, color="#999", ls=":", lw=1)
     ax.set_xlabel("Spend multiplier (1.0 = historical spend)")
     ax.set_ylabel("Incremental revenue, paid search ($M)")
-    ax.set_title("Saturation fix: paid search response curve, before vs after")
+    ax.set_title("Paid search response curve: v1 vs v2 rebuild\n"
+                 "(dataset, seed, priors, and MCMC all changed — not controlled)")
     ax.legend(frameon=False, fontsize=9)
     ax.text(0.01, -0.20,
             SIM_FOOTNOTE + " v1's curve explodes past observed spend; v2's stays "
-            "disciplined. Curves are posterior means with 90% CIs.",
+            "inside plausible levels. Curves are posterior means with 90% CIs. "
+            "Multiple things changed between versions, so the difference is not "
+            "the effect of the prior change alone.",
             transform=ax.transAxes, fontsize=8, color="#666")
     fig.tight_layout()
     fig.savefig(f"{C.CHART_DIR}/06_search_before_after.png", bbox_inches="tight")

@@ -34,7 +34,9 @@ DECAY_B = np.array([7.0, 5.0, 3.0, 8.0, 4.5])
 # v2: TIGHTENED (sigma 0.9 -> 0.45). In v1 the wide ec prior let search's
 # response curve extrapolate wildly past observed spend (unidentified Hill
 # region). The tighter prior keeps saturation inside plausible spend levels
-# while still letting the data move it ~1.5x either way.
+# while still letting the data move it ~1.5x either way. Note: the v1/v2
+# before/after chart is a rebuild log, not a controlled comparison —
+# the dataset, seed, and MCMC config changed between versions too.
 EC_PRIOR_MEDIAN = np.array([25000.0, 20000.0, 100000.0, 8000.0, 18000.0])
 EC_SIGMA = 0.45
 

@@ -38,23 +38,29 @@ seasonality, promo, price).
 ## Where the model misses
 
 Because the data is simulated, I know the true ROIs — and the model gets
-four out of five inside its 90% intervals. The stagger worked: TV's estimate
-(5.4) now sits close to its truth (6.0) instead of leaking credit into promo
-like v1. The remaining miss is paid search — the model says 9.2, truth is
-4.5. Search spend grew smoothly alongside the brand's growth trend for two
+four out of five inside its 90% intervals. The remaining miss is paid
+search — the model says 9.2, truth is 4.5. Search spend grew smoothly alongside the brand's growth trend for two
 straight years, so the model can't fully separate the two. That's not a
 modeling failure, it's the data telling the truth about what 104 weeks of
 observational data can and can't identify. The intervals carry the real
 information here: search's 90% interval (5.4–14.3) spans nearly a 3x range,
 so the 9.2 point estimate should not drive any budget decision on its own.
+TV's estimate is 5.4 against a truth of 6.0; v2 staggers TV flights against
+promo weeks (v1 ran every flight on top of promo weeks) to make TV/promo
+confounding testable, but the dataset, seed, and priors all changed between
+versions, so no single change gets the credit.
 
-## The saturation fix
+## What changed between v1 and v2
 
 v1 had a real problem: the priors on the saturation curve were wide enough
 that paid search's response curve exploded once you pushed spend past what
-was ever observed — the classic unidentified-Hill problem. v2 tightens those
-priors and only presents curves inside observed spend variation (≤1.25x).
-Same data, same model, disciplined curves. The before/after is in the charts.
+was ever observed — the classic unidentified-Hill problem. The v2 rebuild
+changed several things at once: tighter saturation priors, response curves
+presented only inside observed spend variation (≤1.25x), staggered TV/promo
+timing in the simulated dataset, a new random seed, and longer MCMC. Because
+all of that changed together, the v1-vs-v2 before/after chart documents the
+rebuild — it cannot isolate the effect of the prior change. The chart is in
+the charts folder; read it as a log, not an experiment.
 
 ## Budget scenario
 
@@ -92,8 +98,8 @@ randomize the holdout.
   growth trend for two straight years, so the model can't separate the two.
   Do not use this ROI to guide allocation without a calibration experiment.
 - **TV works, expensively.** Biggest absolute contributor, middling
-  efficiency — and now that the promo-confounding is resolved, the 5.4x read
-  is one you can actually use.
+  efficiency — with TV/promo confounding addressed in the v2 design, the
+  5.4x read is one you can actually use.
 - **Display is on the bubble.** ROI interval straddles breakeven (0.3–3.1).
   Cut it or prove it with a geo test — don't scale it.
 - **Paid social is the fuzziest read** (ROI 1.8–8.5). It needs an
