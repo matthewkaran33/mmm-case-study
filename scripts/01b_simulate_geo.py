@@ -4,13 +4,13 @@ Simulate a GEO-structured variant of the Everline Foods MMM dataset.
 *** ALL DATA IN THIS FILE IS SIMULATED. ***
 It is NOT real company data. "Everline Foods" is a fictional brand.
 
-Purpose: demo a geo-holdout validation. 12 geos x 104 weeks, same DGP
-parameters as the national v2 simulation (same true ROI / adstock / Hill
-per channel), but geo-specific spend patterns, size scales, and noise.
-Two geos are designated HOLDOUT: the validation script (04_geo_holdout.py)
-checks whether channel effect estimates learned on the other 10 geos
-transport to the held-out geos — the mechanics of a geo-holdout read,
-without a real randomized experiment.
+Purpose: build the dataset for a synthetic transportability check. 12 geos
+x 104 weeks, same DGP parameters as the national v2 simulation (same true
+ROI / adstock / Hill per channel), but geo-specific spend patterns, size
+scales, and noise. Two geos are designated EVAL: the transportability script
+(04_transportability_check.py) applies the national posterior — fit on
+national weekly data, never on any of these 12 geos — to the eval geos and
+checks the predicted channel effects against the known truth.
 
 Run from the repo root:  python scripts/01b_simulate_data.py
 """
