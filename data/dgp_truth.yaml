@@ -1,0 +1,64 @@
+brand: Everline Foods (FICTIONAL - simulated data)
+channels:
+  display:
+    decay: 0.2
+    hill_ec: 7000
+    hill_slope: 3.0
+    roi_true_per_adstocked_dollar: 1.2
+    total_spend: 856003.7222054511
+    total_true_contribution: 968593.9884918132
+  paid_search:
+    decay: 0.3
+    hill_ec: 22000
+    hill_slope: 2.2
+    roi_true_per_adstocked_dollar: 4.0
+    total_spend: 2950968.255735228
+    total_true_contribution: 13257089.242820015
+  paid_social:
+    decay: 0.5
+    hill_ec: 16000
+    hill_slope: 2.5
+    roi_true_per_adstocked_dollar: 2.8
+    total_spend: 2274975.8639913583
+    total_true_contribution: 11613820.880215963
+  tv:
+    decay: 0.7
+    hill_ec: 90000
+    hill_slope: 2.0
+    roi_true_per_adstocked_dollar: 2.2
+    total_spend: 4760467.0391797125
+    total_true_contribution: 28339050.305590928
+  video:
+    decay: 0.55
+    hill_ec: 14000
+    hill_slope: 2.4
+    roi_true_per_adstocked_dollar: 3.2
+    total_spend: 1666746.0576843885
+    total_true_contribution: 10213885.481405323
+controls:
+  base_revenue: 2100000
+  noise_sd: 90000
+  price_elasticity: -1.8
+  promo_lift: 0.12
+design_notes: 'v2 staggers TV flights vs promo weeks so the TV/promo confounding is
+  a testable feature: each year has clean TV-only windows (weeks 6-8, 28-33, 46-49),
+  a clean promo-only window (22-24), and partial overlaps (9-11, 44-45). In v1 every
+  TV flight ran exactly on top of promo weeks. Same DGP parameters as v1; fresh RNG
+  seed (43).'
+note: SIMULATED data. Ground truth of the simulation, for calibration checks only.
+promo_windows:
+- - 9
+  - 15
+- - 22
+  - 25
+- - 40
+  - 46
+tv_flights:
+- - 6
+  - 12
+- - 28
+  - 34
+- - 44
+  - 50
+version: v2
+weeks: 104

@@ -1,0 +1,191 @@
+brand: Everline Foods (FICTIONAL - simulated data)
+geos:
+  geo_01:
+    holdout: false
+    share: 0.15999999999999998
+    total_spend:
+      display: 131364.3495252242
+      paid_search: 672175.5743809666
+      paid_social: 370227.59303593915
+      tv: 1066903.7241818586
+      video: 160349.053181817
+    total_true_contribution:
+      display: 144446.8458030522
+      paid_search: 3407352.117016933
+      paid_social: 1895513.6254309071
+      tv: 6760584.434791806
+      video: 800318.6377105161
+  geo_02:
+    holdout: false
+    share: 0.12999999999999998
+    total_spend:
+      display: 135030.95421418225
+      paid_search: 465977.63838188164
+      paid_social: 198680.96729286338
+      tv: 463547.49058403756
+      video: 180181.6736480306
+    total_true_contribution:
+      display: 170303.8273019276
+      paid_search: 2258094.8633287526
+      paid_social: 898240.8710841059
+      tv: 2531739.7159003057
+      video: 1042305.7953066996
+  geo_03:
+    holdout: false
+    share: 0.10999999999999997
+    total_spend:
+      display: 96821.72999493827
+      paid_search: 212069.42746423357
+      paid_social: 237302.8675624744
+      tv: 537714.49434161
+      video: 145161.12753971817
+    total_true_contribution:
+      display: 111684.71798708459
+      paid_search: 726374.6230834059
+      paid_social: 1198149.773739882
+      tv: 3217920.942010148
+      video: 821952.6003002811
+  geo_04:
+    holdout: true
+    share: 0.09999999999999998
+    total_spend:
+      display: 83249.68675312403
+      paid_search: 227209.87171322008
+      paid_social: 104332.39009969233
+      tv: 545198.8410084997
+      video: 221278.60362008485
+    total_true_contribution:
+      display: 92371.24930475747
+      paid_search: 882017.3278477741
+      paid_social: 368313.26141814503
+      tv: 3345445.965845088
+      video: 1432377.600477968
+  geo_05:
+    holdout: false
+    share: 0.08999999999999998
+    total_spend:
+      display: 60176.19960829645
+      paid_search: 196253.42131556515
+      paid_social: 191956.30081795936
+      tv: 345158.30567937705
+      video: 195677.18386153897
+    total_true_contribution:
+      display: 54467.42279005325
+      paid_search: 738481.1871519099
+      paid_social: 965470.6054473568
+      tv: 1928922.957847373
+      video: 1264662.7650537826
+  geo_06:
+    holdout: false
+    share: 0.07999999999999999
+    total_spend:
+      display: 68651.21129080682
+      paid_search: 302363.71334460756
+      paid_social: 277519.40668956394
+      tv: 373400.6539591055
+      video: 189898.77609738702
+    total_true_contribution:
+      display: 77862.7802571064
+      paid_search: 1488884.871195956
+      paid_social: 1493584.7876481242
+      tv: 2204512.2049650317
+      video: 1240947.495333504
+  geo_07:
+    holdout: false
+    share: 0.07999999999999999
+    total_spend:
+      display: 52488.59234593765
+      paid_search: 234783.021351485
+      paid_social: 142103.82279270212
+      tv: 333029.6546521754
+      video: 92742.30339707155
+    total_true_contribution:
+      display: 46530.071970792014
+      paid_search: 1052262.281273781
+      paid_social: 679728.5751653414
+      tv: 1911784.5694796564
+      video: 499249.10629667435
+  geo_08:
+    holdout: false
+    share: 0.06999999999999999
+    total_spend:
+      display: 58554.46294361667
+      paid_search: 124841.79493317049
+      paid_social: 195362.68227702467
+      tv: 375046.2644368107
+      video: 124894.89061170266
+    total_true_contribution:
+      display: 65150.343418550285
+      paid_search: 399563.58195577114
+      paid_social: 1029471.1208511741
+      tv: 2284971.6347710434
+      video: 781746.803804426
+  geo_09:
+    holdout: true
+    share: 0.059999999999999984
+    total_spend:
+      display: 47955.06035792777
+      paid_search: 203971.6870108128
+      paid_social: 109607.13380136485
+      tv: 307030.8209296499
+      video: 100120.5664753484
+    total_true_contribution:
+      display: 51471.47011747764
+      paid_search: 970425.5127560985
+      paid_social: 529553.7141320177
+      tv: 1858266.1119879307
+      video: 614173.1183278869
+  geo_10:
+    holdout: false
+    share: 0.04999999999999999
+    total_spend:
+      display: 57836.83248561155
+      paid_search: 193272.62310394755
+      paid_social: 125234.16460670411
+      tv: 267172.52257000236
+      video: 93060.85241535166
+    total_true_contribution:
+      display: 76358.0047254502
+      paid_search: 957573.3152396663
+      paid_social: 650148.6545359034
+      tv: 1630072.8280025942
+      video: 584341.0185350161
+  geo_11:
+    holdout: false
+    share: 0.039999999999999994
+    total_spend:
+      display: 44403.7035201313
+      paid_search: 135421.41009429548
+      paid_social: 103166.47538738215
+      tv: 285970.24928559986
+      video: 59891.98524914136
+    total_true_contribution:
+      display: 57626.916133618324
+      paid_search: 643300.6152475507
+      paid_social: 537928.9272170034
+      tv: 1834009.0709861983
+      video: 354863.8467953054
+  geo_12:
+    holdout: false
+    share: 0.029999999999999992
+    total_spend:
+      display: 21413.355147487102
+      paid_search: 74950.20656360885
+      paid_social: 48267.73410193097
+      tv: 121579.29304195654
+      video: 51422.53629774836
+    total_true_contribution:
+      display: 20714.23654260653
+      paid_search: 308844.81643215986
+      paid_social: 222775.51131417562
+      tv: 692002.2872182173
+      video: 316401.83370108495
+holdout_geos:
+- geo_04
+- geo_09
+n_geos: 12
+note: "SIMULATED data. Geo variant of the v2 DGP \u2014 same true ROI/decay/slope,\
+  \ geo-specific spend draws and noise. Saturation (ec) scales with geo size: ec_geo\
+  \ = ec_national * geo_share, so each geo sits at the same relative point on its\
+  \ saturation curve as the nation does."
+weeks: 104

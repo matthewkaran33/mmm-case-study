@@ -1,0 +1,119 @@
+{
+  "note": "SIMULATED DATA \u2014 Everline Foods is fictional.",
+  "version": "v2",
+  "channels": [
+    {
+      "channel": "Paid Search",
+      "spend": 2950968.255735228,
+      "pct_spend": 23.59045718712469,
+      "incremental_revenue": 27292912.963130753,
+      "incr_lo": 15800389.657154983,
+      "incr_hi": 42227212.75677445,
+      "pct_contribution": 7.970090999659488,
+      "roi_mean": 9.248799240753195,
+      "roi_lo": 5.354306887729752,
+      "roi_hi": 14.309612675333108,
+      "mroi_mean": 28.14710121748223
+    },
+    {
+      "channel": "Paid Social",
+      "spend": 2274975.863991358,
+      "pct_spend": 18.186478494618346,
+      "incremental_revenue": 10425307.776415009,
+      "incr_lo": 4067173.209851082,
+      "incr_hi": 19429262.35234749,
+      "pct_contribution": 3.0444039370121545,
+      "roi_mean": 4.5826014866479525,
+      "roi_lo": 1.7877874109465859,
+      "roi_hi": 8.5404257073126,
+      "mroi_mean": 9.092496000589415
+    },
+    {
+      "channel": "TV",
+      "spend": 4760467.0391797125,
+      "pct_spend": 38.05584613125821,
+      "incremental_revenue": 25473207.426235992,
+      "incr_lo": 22167477.086554185,
+      "incr_hi": 28875202.567752454,
+      "pct_contribution": 7.438699618269473,
+      "roi_mean": 5.350989139633943,
+      "roi_lo": 4.6565761098881415,
+      "roi_hi": 6.065623883140679,
+      "mroi_mean": 7.647758825692146
+    },
+    {
+      "channel": "Display",
+      "spend": 856003.7222054513,
+      "pct_spend": 6.8430147025339325,
+      "incremental_revenue": 1069247.6170052781,
+      "incr_lo": 249200.74402125127,
+      "incr_hi": 2628337.591209278,
+      "pct_contribution": 0.3122422593811536,
+      "roi_mean": 1.2491156162854227,
+      "roi_lo": 0.2911210986083073,
+      "roi_hi": 3.0704744886359787,
+      "mroi_mean": 2.5237735405729578
+    },
+    {
+      "channel": "Online Video",
+      "spend": 1666746.0576843882,
+      "pct_spend": 13.324203484464828,
+      "incremental_revenue": 15737610.33275696,
+      "incr_lo": 10199433.319517527,
+      "incr_hi": 23945521.19748906,
+      "pct_contribution": 4.595705362732612,
+      "roi_mean": 9.442116428114572,
+      "roi_lo": 6.119368497974795,
+      "roi_hi": 14.366628369744936,
+      "mroi_mean": 21.23894766428615
+    }
+  ],
+  "calibration": [
+    {
+      "channel": "Paid Search",
+      "true_roi": 4.49245403336846,
+      "post_roi": 9.248799240753195,
+      "in_90ci": false
+    },
+    {
+      "channel": "Paid Social",
+      "true_roi": 5.105030371548628,
+      "post_roi": 4.5826014866479525,
+      "in_90ci": true
+    },
+    {
+      "channel": "TV",
+      "true_roi": 5.952997903851488,
+      "post_roi": 5.350989139633943,
+      "in_90ci": true
+    },
+    {
+      "channel": "Display",
+      "true_roi": 1.1315301129722648,
+      "post_roi": 1.2491156162854227,
+      "in_90ci": true
+    },
+    {
+      "channel": "Online Video",
+      "true_roi": 6.128039382073284,
+      "post_roi": 9.442116428114572,
+      "in_90ci": true
+    }
+  ],
+  "scenario": {
+    "method": "full posterior draws through analyzer.incremental_outcome(new_data=scenario_media)",
+    "shift_amount": 128400.55833081767,
+    "from": "Display",
+    "to": "Online Video",
+    "video_multiplier": 1.0770366653869303,
+    "display_multiplier": 0.85,
+    "n_draws": 8000,
+    "expected_gain": 2853648.5003867615,
+    "expected_gain_lo": 2352577.737511223,
+    "expected_gain_hi": 3369699.3475648896,
+    "expected_loss": 293059.9164001322,
+    "net": 2560588.5839866293,
+    "net_lo": 1896677.1897406466,
+    "net_hi": 3170286.517813641
+  }
+}

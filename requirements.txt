@@ -1,0 +1,5 @@
+# Pinned at first successful run (2026-09-30). Meridian pulls its own
+# dependency tree (jax, tensorflow, tfp-nightly, arviz, ...).
+google-meridian==2.1.0
+pyyaml>=6.0
+matplotlib>=3.8
