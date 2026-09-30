@@ -184,8 +184,8 @@ holdout_geos:
 - geo_04
 - geo_09
 n_geos: 12
-note: "SIMULATED data. Geo variant of the v2 DGP \u2014 same true ROI/decay/slope,\
-  \ geo-specific spend draws and noise. Saturation (ec) scales with geo size: ec_geo\
-  \ = ec_national * geo_share, so each geo sits at the same relative point on its\
-  \ saturation curve as the nation does."
+note: 'SIMULATED data. Geo variant of the v2 DGP - same true ROI/decay/slope, geo-specific
+  spend draws and noise. Saturation (ec) scales with geo size: ec_geo = ec_national
+  * geo_share, so each geo sits at the same relative point on its saturation curve
+  as the nation does.'
 weeks: 104
