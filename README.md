@@ -21,7 +21,7 @@ An end-to-end Marketing Mix Modeling case study built with
    channel. Saturation priors were deliberately tightened in v2 after v1's
    wide priors let one channel's response curve extrapolate wildly.
 3. **Diagnostics** — convergence (R-hat), posterior predictive checks,
-   prior-vs-posterior shift charts. Limitations are noted honestly.
+   prior-vs-posterior shift charts. Limitations are listed at the bottom.
 4. **Read-out** — channel contribution, ROI per channel, calibration of the
    model's answers against the simulation's known truth.
 5. **Scenario** — budget reallocation ("what if we shifted 15% of display
@@ -85,7 +85,7 @@ device": `TMPDIR=~/.pip-tmp pip install -r requirements.txt`.
   spend variation (≤1.25x); the v1-vs-v2 before/after is chart 06.
 - **Longer MCMC**: 4 chains × 2000 kept draws (was 2 × 500), plus
   prior-vs-posterior shift charts (07, 08).
-- **Honest scenario uncertainty**: the budget reallocation pushes every
+- **Scenario uncertainty**: the budget reallocation pushes every
   posterior draw through the model's own adstock + saturation transform
   instead of interpolating curve CIs (chart 05 is now the net-gain
   distribution).
@@ -103,6 +103,6 @@ device": `TMPDIR=~/.pip-tmp pip install -r requirements.txt`.
   ranking as more reliable than any single point estimate.
 - The budget scenario is a directional illustration, not a media plan.
   Marginal-return estimates are the least-identified part of any MMM; the
-  full-posterior interval is honest about that and it is wide.
+  full-posterior interval is wide, which is the point.
 - The geo-holdout demo tests transportability to unseen geos on simulated
   data. A real geo test randomizes the holdout — this demo does not.

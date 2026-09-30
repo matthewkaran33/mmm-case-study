@@ -35,7 +35,7 @@ the truth, which you can't do with real data.
 Media overall drove roughly 23% of revenue; the rest is baseline (brand,
 seasonality, promo, price).
 
-## The honest part
+## Where the model misses
 
 Because the data is simulated, I know the true ROIs — and the model gets
 four out of five inside its 90% intervals. The stagger worked: TV's estimate
@@ -44,8 +44,9 @@ like v1. The remaining miss is paid search — the model says 9.2, truth is
 4.5. Search spend grew smoothly alongside the brand's growth trend for two
 straight years, so the model can't fully separate the two. That's not a
 modeling failure, it's the data telling the truth about what 104 weeks of
-observational data can and can't identify. A hiring manager should know I
-read the intervals, not just the point estimates.
+observational data can and can't identify. The intervals carry the real
+information here: search's 90% interval (5.4–14.3) spans nearly a 3x range,
+so the 9.2 point estimate should not drive any budget decision on its own.
 
 ## The saturation fix
 
